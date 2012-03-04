@@ -1,0 +1,8 @@
+CLI
+3
+PseudoRandom_Robert
+
+Explanation:
+Line 1: [CLI, GUI] Default Startup UI, either CLI (Command Line Interface) or GUI (Graphical User Interface).
+Line 2: [1 ... 50] Number of rounds per game.  The limit is 50 rounds max, 1 round minimum, integer values only. 
+Lime 3: Default AI name. (Built in AI: PseudoRandom_Robert).
