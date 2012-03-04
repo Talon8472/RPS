@@ -1,5 +1,7 @@
 package net.heraan;
 
+import java.util.ArrayList;
+
 /**
  * @description: ?
  * 
@@ -8,7 +10,7 @@ package net.heraan;
  */
 public class Game
 {
-    /*
+    /**
      * @description: ?
      * 
      * @precondition ?
@@ -19,23 +21,74 @@ public class Game
         // CODE
     }
 
-    /*
+    /**
      * @description: ?
      * 
-     * @param rounds the number of rounds to be played.
+     * @param rounds the number of rounds to be played. [Size = 1 ... 50]
+     * @param players the two players who will be playing this game. [Size = 2]
      * @precondition ?
      * @postcondition ?
      */
-    public Game(int rounds)
+    public Game(int rounds, Player[] players)
     {
         this.rounds = rounds;
+        this.players = players;
     }
     
-    public void play()
+    /**
+     * @description: ?
+     * 
+     * @param player "0" is the first player, "1" is the second player.
+     * @param play "rock", "paper", "scissors"
+     * @precondition ?
+     * @postcondition ?
+     */    
+    public void play(Player player, Play move)
     {
-        // CODE
+        if ( this.is_GameOver() == false )
+        {
+            // CODE
+            
+        }
+        else
+        {
+            // CODE
+        }
+    }
+    
+    
+    public int get_currentRound()
+    {
+        return 0;
+    }
+    
+    public boolean is_GameOver()
+    {
+        return false;
     }
 
+
+    private enum Result {WIN, LOSE, TIE}
+    public enum Play {ROCK, PAPER, SCISSORS}
     
-    private int rounds;
+    private final int rounds;
+    private final Player[] players;
+    
+    private ArrayList<Round> RoundResults;
+    
+   /**
+    * @description: ?
+    * 
+    * @author Robert Friedland
+    * @version March 3, 2012 
+    */
+    private class Round
+    {
+        // CODE
+        
+        public Round()
+        {
+            // CODE
+        }
+    }
 }
