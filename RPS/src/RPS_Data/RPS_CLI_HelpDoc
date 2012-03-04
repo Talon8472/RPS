@@ -1,0 +1,28 @@
+        Here are the available actions list and their associated descriptions.
+
+        - Commands: (3 in total.)
+          1.)     quit: Exits the round, game, and application.
+                        No moves are recorded for that round.
+          2.)     help: Displays this help text.
+          3.)    score: Displays the score (win, loss, tie) totals for the human 
+                        player for each game and round as well as the time 
+                        associated with each.
+
+        -    Plays: (3 in total.)
+          1.)     rock: Plays the "rock" move for the human player. 
+                        Beats the "scissors" play. 
+          2.)    paper: Plays the "paper" move for the human player.
+                        Beats the "rock" play.
+          3.) scissors: Plays the "scissors" move for the human player.
+                        Beats the "paper" play.
+
+        Game Play Instructions: Rock Paper Scissors is a two player game.
+                                Each game can consist of any number of rounds
+                                and can result in a win, loss or tie. A game is
+                                won by winning the most rounds. Each round
+                                consists of one play by each player without the
+                                foreknowledge of the other's play. Each play
+                                consists of either a rock, paper, or scissors.
+                                Rock beats scissors. Paper beats rock. Scissors
+                                beats paper.  If each player plays the same move
+                                then, a tie is recorded.
