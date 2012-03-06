@@ -325,6 +325,22 @@ public class Game
         }
     }
     
+    public Round get_Round(int round_number) throws Exception
+    {
+        if      ( ( this.max_rounds < round_number ) )
+        {
+            throw new Exception("There are only "+this.max_rounds+" total rounds.");
+        }
+        else if ( ( this.get_CurrentRoundNumber() < round_number ) )
+        {
+            throw new Exception("There are only "+this.get_CurrentRoundNumber()+" rounds in play or played at the moment.");
+        }
+        else
+        {
+            return (this.rounds.get(round_number));
+        }
+    }
+    
     public boolean is_GameOver()
     {
         if ( ( this.rounds.size() == this.max_rounds ) )

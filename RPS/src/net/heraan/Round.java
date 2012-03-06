@@ -14,6 +14,7 @@
 
 package net.heraan;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import net.heraan.Game.Play;
 import net.heraan.Game.Result;
@@ -22,7 +23,8 @@ import net.heraan.Game.Result;
  * @description ?
  * 
  * @author Robert Friedland
- * @version March 4, 2012
+ * @documentor: Quynhanh Nguyen
+ * @version March 4, 2012 (1.0)
  */
 public class Round
 {
@@ -112,11 +114,20 @@ public class Round
      * @postcondition ?
      * @precondition ?
      */ 
-    public Player[] get_WaitingOn()
+    public ArrayList<Player> get_WaitingOn()
     {
-        return null;
+        ArrayList<Player> result = new ArrayList<Player>();
         
-        //if ( (this.player_Moves[0] == null) )
+        if ( ( this.player_Moves[0] == null ) )
+        {
+            result.add(this.players[0]);
+        }
+        if ( ( this.player_Moves[1] == null ) )
+        {
+            result.add(this.players[1]);
+        }
+        
+        return result;
     }
     
     /**
@@ -335,7 +346,6 @@ public class Round
      * @description: ?
      * 
      * @return ?
-     * @throws ?
      * @postcondition ?
      * @precondition ?
      */   
@@ -350,7 +360,6 @@ public class Round
             return (true);
         }
     }
-    
     
     private final Player[] players; // ?
     

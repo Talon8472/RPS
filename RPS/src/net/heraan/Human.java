@@ -14,6 +14,8 @@
 
 package net.heraan;
 
+import java.util.ArrayList;
+
 /**
  * @description ?
  * 
@@ -22,5 +24,55 @@ package net.heraan;
  */
 public class Human extends Player
 {
+    // [BEGIN] Constructors [BEGIN]
+    public Human()
+    {
+        // CODE
+    }
     
+    // [ END ] Constructors [ END ]
+    
+    public void save()
+    {
+        // CODE
+    }
+    
+    // [BEGIN] Name Handling [BEGIN]
+    
+    public void set_FirstName(String first_name)
+    {
+        this.human_first_name = first_name;
+    }
+    
+    public void set_LastName(String last_name)
+    {
+        this.human_last_name = last_name;
+    }
+    
+    public String get_FirstName()
+    {
+        return (this.human_first_name);
+    }
+    
+    public String get_LastName()
+    {
+        return (this.human_last_name);
+    }
+    
+    // [ END ] Name Handling [ END ]
+
+    @Override
+    public void import_Player()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void export_Player()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    private String human_first_name;
+    private String human_last_name;
 }

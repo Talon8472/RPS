@@ -14,6 +14,8 @@
 
 package net.heraan;
 
+import java.util.ArrayList;
+
 /**
  * @description ?
  * 
@@ -22,5 +24,26 @@ package net.heraan;
  */
 public class AI extends Player
 {
+    // [BEGIN] Constructors [BEGIN]
     
+    public AI()
+    {
+        // CODE
+    }
+    
+    // [ END ] Constructors [ END ]
+    
+    // TRHOW CALCULATOR
+    
+    @Override
+    public void import_Player()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void export_Player()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

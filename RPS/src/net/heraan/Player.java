@@ -14,13 +14,45 @@
 
 package net.heraan;
 
+import java.util.ArrayList;
+
 /**
  * @description ?
  * 
  * @author Robert Friedland
  * @version March 4, 2012
  */
-public class Player
+public abstract class Player
 {
+    public Player()
+    {
+        
+    }
     
+    public abstract void import_Player();  // For Version 2.0
+    public abstract void export_Player();  // For Version 2.0
+        
+    public void record_Game(Game game)
+    {
+        this.game_history.add(game);
+    }
+    
+    public ArrayList<Game> get_GameHistory()
+    {
+        return (game_history);
+    }
+    
+    public String get_Nickname()
+    {
+        return (this.player_nickname);
+    }
+    
+    public void set_Nickname(String nickname)
+    {
+        this.player_nickname = nickname;
+    }
+    
+    
+    private String player_nickname;
+    private ArrayList<Game> game_history;
 }
