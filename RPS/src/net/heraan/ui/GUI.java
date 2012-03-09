@@ -14,17 +14,20 @@
 
 package net.heraan.ui;
 
-import net.heraan.*;
-
 /**
  * @description: This is the GUI, Graphic User Interface, for the RPS, Rock Paper Scissors, game.  User input is received, processed, and output is given.
  * 
  * @author Robert Friedland
- * @version March 3, 2012
+ * @documentor Robert Friedland
+ * @version March 8, 2012 (1.0)
  */
 public class GUI
 {
-    /*
+    // [BEGIN] IGNORE: Version 2.0 Stuff [BEGIN]
+    
+    // [BEGIN] Constructors Section [BEGIN]
+    
+    /**
      * @description: Starts a new GUI for the user.
      * 
      * @precondition ?
@@ -37,8 +40,7 @@ public class GUI
        // Notes: Will read from RPS_GameDefaults file.
    }
 
-    
-    /*
+    /**
      * @description: Starts a new GUI for the user.
      * 
      * @param rounds_per_match The default number of rounds per match.
@@ -49,4 +51,8 @@ public class GUI
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+    
+    // [ END ] Constructors Section [ END ]
+    
+    // [ END ] IGNORE: Version 2.0 Stuff [ END ]
 }

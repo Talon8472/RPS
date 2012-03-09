@@ -14,43 +14,55 @@
 
 package net.heraan.ui;
 
-import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import net.heraan.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
+import net.heraan.Player.AI.AI;
+import net.heraan.Game;
+import net.heraan.Player.Human.Human;
+import net.heraan.Player.Player;
 
 /**
  * @description: This is the CLI, Command Line Interface, for the RPS, Rock Paper Scissors, game.  User input is received, processed, and output is given.
  * 
  * @author Robert Friedland
- * @version March 3, 2012
+ * @documentor Robert Friedland
+ * @version March 8, 2012 (1.0)
  */
 public class CLI
 {
+    // [BEGIN] Constructors Section [BEGIN]
+
     /*
      * @description: Starts a new CLI for the user.
      * 
-     * @precondition ?
+     * @param rounds_per_game The default number of rounds per match.
+     * @precondition A non-zero integer value is given specifying the number of rounds per game.
      * @postcondition ?
      */
-    public CLI()
+    public CLI(int rounds_per_game)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        // [BEGIN] Creates & performs setup for Players [BEGIN]
         
-        // Notes: Will read from RPS_GameDefaults.
-    }
-    
-    
-    /*
-     * @description: Starts a new CLI for the user.
-     * 
-     * @param rounds_per_match The default number of rounds per match.
-     * @precondition ?
-     * @postcondition ?
-     */
-    public CLI(int rounds_per_match) throws ParseException
-    {
+        Player human = new Human();
+        Player ai = new AI();
+        
+        human.set_Nickname("Pitiful Human Warrior");
+        ai.set_Nickname("Pseudo Random Robert");
+        
+        // [ END ] Creates & performs setup for Players [ END ]
+        
+        // [BEGIN] Creates & performs setup for Game [BEGIN]
+        
+        ArrayList<Player> competitors = new ArrayList<Player>();
+        competitors.add(human);
+        competitors.add(ai);
+        competitors.trimToSize();
+        
+        Game championship = new Game(rounds_per_game, competitors);
+        
+        // [ END ] Creates & performs setup for Game [ END ]
+        
         // Welcome Message.  NOTE: Change to 12 hour time with AM-PM.  
         System.out.println("Welcome, today is: "+Calendar.getInstance().getTime());
         
@@ -60,7 +72,7 @@ public class CLI
         {
             Scanner input = new Scanner(System.in);
 			
-            System.out.print("\n SYSTEM: Please enter a command (quit, help, score) or play (rock, paper, scissors).\nCommand: ");
+            System.out.print("\n SYSTEM: Please enter a command (quit, help, score) or play (rock, paper, scissors).\n  INPUT: ");
         
             String answer = input.next();
             
@@ -131,6 +143,15 @@ public class CLI
             // IMPORTANT: Closes the Scanner Input.
             input.close();
         }
+    }
+    
+    // [ END ] Constructors Section [ END ]
+    
+    private void process_Input(String answer)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+        
+        
     }
     
     /*
