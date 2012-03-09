@@ -14,27 +14,20 @@
 
 package net.heraan;
 
+import net.heraan.Player.Player;
 import java.util.ArrayList;
 
 /**
  * @description: ?
  * 
  * @author Robert Friedland
- * @version March 3, 2012 
+ * @documentor Quynhanh Nguyen
+ * @version March 3, 2012 (1.0)
  */
 public class Game
 {
-//    /**
-//     * @description: ?
-//     * 
-//     * @precondition ?
-//     * @postcondition ?
-//     */
-//    public Game()
-//    {
-//        // CODE
-//    }
-
+    // [BEGIN] Constructors Section [BEGIN]
+    
     /**
      * @description: ?
      * 
@@ -43,14 +36,16 @@ public class Game
      * @precondition ?
      * @postcondition ?
      */
-    public Game(int max_rounds, Player[] players)
+    public Game(int max_rounds, ArrayList<Player> players)
     {
         this.max_rounds = max_rounds;
-        this.players = players;
         
-        // Sizes the ArrayList optimally so that future allocations are unnessary.
-        this.rounds.ensureCapacity(max_rounds);
+        this.players = new Player[2];
+        this.players[0] = players.get(0);
+        this.players[1] = players.get(1);
     }
+    
+    // [ END ] Constructors Section [ END ]
     
 
     public void play(Player player, Play move) throws Exception

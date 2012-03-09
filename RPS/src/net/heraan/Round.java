@@ -14,6 +14,7 @@
 
 package net.heraan;
 
+import net.heraan.Player.Player;
 import java.util.ArrayList;
 import java.util.Calendar;
 import net.heraan.Game.Play;
@@ -23,11 +24,13 @@ import net.heraan.Game.Result;
  * @description ?
  * 
  * @author Robert Friedland
- * @documentor: Quynhanh Nguyen
+ * @documentor Quynhanh Nguyen
  * @version March 4, 2012 (1.0)
  */
 public class Round
 {
+    // [BEGIN] Constructors Section [BEGIN]
+    
     /**
      * @description: ?
      * 
@@ -42,6 +45,8 @@ public class Round
         this.player_Moves[0] = null;
         this.player_Moves[1] = null;
     }
+    
+    // [ END ] Constructors Section [ END ]
     
     /**
      * @description: ?
@@ -126,7 +131,6 @@ public class Round
         {
             result.add(this.players[1]);
         }
-        
         return result;
     }
     
