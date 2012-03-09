@@ -14,359 +14,238 @@
 
 package net.heraan;
 
-import net.heraan.Player.Player;
 import java.util.ArrayList;
-import java.util.Calendar;
 import net.heraan.Game.Play;
 import net.heraan.Game.Result;
+import net.heraan.Player.Player;
 
 /**
- * @description ?
+ * @description An individual round as part of a game.
  * 
  * @author Robert Friedland
  * @documentor Quynhanh Nguyen
- * @version March 4, 2012 (1.0)
+ * @version March 9, 2012 (1.0)
  */
 public class Round
 {
     // [BEGIN] Constructors Section [BEGIN]
     
-    /**
-     * @description: ?
-     * 
-     * @param players ?
-     * @postcondition ?
-     * @precondition ?
-     */
-    public Round(Player[] players)
+    public Round()
     {
-        this.players = players;
-        
-        this.player_Moves[0] = null;
-        this.player_Moves[1] = null;
+        players = new ArrayList<Player>();
+        plays = new ArrayList<Play>();
+    }
+    
+    public Round(ArrayList<Player> players)
+    {
+        this.set_Players(players);
+        plays = new ArrayList<Play>();
+    }
+    
+    public Round(ArrayList<Player> players, ArrayList<Play> plays)
+    {
+        this.set_Plays(players, plays);
     }
     
     // [ END ] Constructors Section [ END ]
     
-    /**
-     * @description: ?
-     * 
-     * @param player ?
-     * @param play ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */
-    public void play(Player player, Play play) throws Exception
+    
+    
+    // [BEGIN] Setters Section [BEGIN]
+    
+    public void set_Play(Player player, Play play)
     {
-        if      ( ( ( this.players[0] == player ) && ( this.player_Moves[0] == null ) ) )
+        this.plays.add(play);
+    }
+    
+    public void set_Plays(ArrayList<Player> players, ArrayList<Play> plays)
+    {
+        this.players = players;
+        this.plays = plays;
+    }
+    
+    public void set_Players(ArrayList<Player> players)
+    {
+        this.players = players;
+    }
+    
+    public void add_Player(Player player)
+    {
+        this.players.add(player);
+    }
+    
+    public void add_Players(ArrayList<Player> players)
+    {
+        // CODE
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    // [ END ] Setters Section [ END ]
+    
+    
+    
+    
+    // [BEGIN] Getters Section [BEGIN]
+    
+    public Play get_Play(Player player)
+    {
+        if ( ( this.players.get(0) == player ) )
         {
-            this.player_Moves[0] = play;
-            this.player_MoveTimes[0] = Calendar.getInstance().getTime().toString();
+            return (this.plays.get(0));
         }
-        else if ( ( ( this.players[0] == player ) && ( this.player_Moves[0] != null ) ) )
+        else
         {
-            throw new Exception("Player has already played.");
-        }
-        else if ( ( ( this.players[1] == player ) && ( this.player_Moves[1] == null ) ) )
-        {
-            this.player_Moves[1] = play;
-            this.player_MoveTimes[1] = Calendar.getInstance().getTime().toString();
-        }
-        else if ( ( ( this.players[1] == player ) && ( this.player_Moves[1] != null ) ) )
-        {
-            throw new Exception("Player has already played.");
+            return (this.plays.get(1));
         }
     }
     
-     /**
-     * @description: ?
-     * 
-     * @param player 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public Play get_Play(Player player) throws Exception
+    public ArrayList<Player> get_Players()
     {
-        if      ( ( this.players[0] == player ) && ( this.player_Moves[0] == null ) )
-        {
-            throw new Exception("Player has not played yet.");
-        }
-        else if ( ( this.players[0] == player ) && ( this.player_Moves[0] != null ) )
-        {
-            return (this.player_Moves[0]);
-        }
-        else if ( ( this.players[1] == player ) && ( this.player_Moves[1] == null ) )
-        {
-            throw new Exception("Player has not played yet.");
-        }
-        else if ( ( this.players[1] == player ) && ( this.player_Moves[1] != null ) )
-        {
-            return (this.player_Moves[1]);
-        }
-        
-        
-        throw new Exception("Unknown error has occurred.");
+        return (this.players);
     }
     
-    /**
-     * @description: ?
-     * 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */ 
-    public ArrayList<Player> get_WaitingOn()
+    public ArrayList<Player> get_HasPlayedList()
     {
-        ArrayList<Player> result = new ArrayList<Player>();
-        
-        if ( ( this.player_Moves[0] == null ) )
-        {
-            result.add(this.players[0]);
-        }
-        if ( ( this.player_Moves[1] == null ) )
-        {
-            result.add(this.players[1]);
-        }
-        return result;
+        // CODE
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
-    /**
-     * @description: ?
-     * 
-     * @param player 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */ 
-    public Result get_PlayerResult(Player player) throws Exception
+    public ArrayList<Player> get_HasNotPlayedList()
     {
-        if      ( ( this.is_RoundComplete() == false ) )
+        // CODE
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public Result get_PlayerResult(Player player)
+    {
+        if ( ( this.is_RoundComplete() == false ) )
         {
-            throw new Exception("Round incomplete, results incaculable.");
+            return (null);
         }
-        else if ( ( this.is_Tie() == true ) )
+        
+        if ( ( this.is_Tie() == true ) )
         {
             return (Result.TIE);
         }
-        else if ( ( this.is_Winner(player) == true ) )
+        else if ( ( this.get_Winner() == player ) )
         {
             return (Result.WIN);
         }
-        // If round is complete, and not a winner or tie, then loser.
         else
         {
             return (Result.LOSE);
         }
     }
     
-    /**
-     * @description: ?
-     * 
-     * @param player 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public String get_MoveTimes(Player player) throws Exception
+    public Player get_Winner()
     {
-        if      ( ( this.players[0] == player ) && ( this.player_Moves[0] == null ) )
-        {
-            throw new Exception("Player has not played yet.");
-        }
-        else if ( ( this.players[0] == player ) && ( this.player_Moves[0] != null ) )
-        {
-            return (this.player_MoveTimes[0]);
-        }
-        else if ( ( this.players[1] == player ) && ( this.player_Moves[1] == null ) )
-        {
-            throw new Exception("Player has not played yet.");
-        }
-        else if ( ( this.players[1] == player ) && ( this.player_Moves[1] != null ) )
-        {
-            return (this.player_MoveTimes[1]);
-        }
-        
-        
-        throw new Exception("Unknown error has occurred.");
-    }
-
-    /**
-     * @description: ?
-     * 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public Player get_Winner() throws Exception
-    {
+        // Round incomplete.
         if ( ( this.is_RoundComplete() == false ) )
         {
-            throw new Exception("Round incomplete, winner incaculable.");
+            return (null);
         }
         
         // Player 1 win sequences.
-        if      ( ( ( this.player_Moves[0] == Play.ROCK ) && ( this.player_Moves[1] == Play.SCISSORS ) ) )
+        if      ( ( this.plays.get(0) == Play.ROCK ) && ( this.plays.get(1) == Play.SCISSORS ) )
         {
-            return (players[0]);
+            return (this.players.get(0));
         }
-        else if ( ( ( this.player_Moves[0] == Play.PAPER ) && ( this.player_Moves[1] == Play.ROCK ) ) )
+        else if ( ( this.plays.get(0) == Play.PAPER ) && ( this.plays.get(1) == Play.ROCK ) )
         {
-            return (players[0]);
+            return (this.players.get(0));
         }
-        else if ( ( ( this.player_Moves[0] == Play.SCISSORS ) && ( this.player_Moves[1] == Play.PAPER ) ) )
+        else if ( ( this.plays.get(0) == Play.SCISSORS ) && ( this.plays.get(1) == Play.PAPER ) )
         {
-            return (players[0]);
+            return (this.players.get(0));
         }
         // Player 2 win sequences.
-        else if ( ( ( this.player_Moves[0] == Play.ROCK ) && ( this.player_Moves[1] == Play.PAPER ) ) )
+        else if ( ( this.plays.get(1) == Play.ROCK ) && ( this.plays.get(0) == Play.SCISSORS ) )
         {
-            return (players[1]);
+            return (this.players.get(1));
         }
-        else if ( ( ( this.player_Moves[0] == Play.PAPER ) && ( this.player_Moves[1] == Play.SCISSORS ) ) )
+        else if ( ( this.plays.get(1) == Play.PAPER ) && ( this.plays.get(0) == Play.ROCK ) )
         {
-            return (players[1]);
+            return (this.players.get(1));
         }
-        else if ( ( ( this.player_Moves[0] == Play.SCISSORS ) && ( this.player_Moves[1] == Play.ROCK ) ) )
+        else if ( ( this.plays.get(1) == Play.SCISSORS ) && ( this.plays.get(0) == Play.PAPER ) )
         {
-            return (players[1]);
+            return (this.players.get(1));
         }
-        // Tie Game.
+        // Tie game.
         else
         {
             return (null);
         }
     }
     
-    /**
-     * @description: ?
-     * 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public Player get_Loser() throws Exception
+    public Player get_Loser()
     {
-        if      ( ( this.is_RoundComplete() == false ) )
-        {
-            throw new Exception("Round incomplete, loser incaculable.");
-        }
-        else if ( ( this.get_Winner() == null ) )
-        {
-            return (null);
-        }
-        else if ( ( this.get_Winner() == this.players[0] ) )
-        {
-            return (this.players[1]);
-        }
-        else
-        {
-            return (this.players[0]);
-        }
+        // CODE
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
-    /**
-     * @description: ?
-     * 
-     * @param player 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public boolean is_Winner(Player player) throws Exception
-    {
-        if      ( ( this.is_RoundComplete() == false ) )
-        {
-            throw new Exception("Round incomplete, winner incaculable.");
-        }
-        else if ( ( this.get_Winner() == player ) )
-        {
-            return (true);
-        }
-        else
-        {
-            return (false);
-        }
-    }
+    // [ END ] Getters Section [ END ]
     
-    /**
-     * @description: ?
-     * 
-     * @param player 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public boolean is_Loser(Player player) throws Exception
-    {
-        if      ( ( this.is_RoundComplete() == false ) )
-        {
-            throw new Exception("Round incomplete, loser incaculable.");
-        }
-        else if ( ( this.get_Loser() == player ) )
-        {
-            return (true);
-        }
-        else
-        {
-            return (false);
-        }
-    }
     
-    /**
-     * @description: ?
-     * 
-     * @return ?
-     * @throws ?
-     * @postcondition ?
-     * @precondition ?
-     */   
-    public boolean is_Tie() throws Exception
-    {
-        if      ( (this.is_RoundComplete() == false) )
-        {
-            throw new Exception("Round incomplete, tie incaculable.");
-        }
-        else if ( ( this.player_Moves[0] == this.player_Moves[1] ) )
-        {
-            return (true);
-        }
-        else
-        {
-            return (false);
-        }
-    }
     
-    /**
-     * @description: ?
-     * 
-     * @return ?
-     * @postcondition ?
-     * @precondition ?
-     */   
+    // [BEGIN] Boolean Section [BEGIN]
+    
     public boolean is_RoundComplete()
     {
-        if ( ( ( this.player_Moves[0] == null ) || ( this.player_Moves[1] == null) ) )
-        {
-            return (false);
-        }
-        else
+        if ( (this.plays != null) && ( this.plays.size() == 2 ) )
         {
             return (true);
         }
+        else
+        {
+            return (false);
+        }
     }
     
-    private final Player[] players; // ?
+    public boolean has_Played(Player player)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     
-    private Play[] player_Moves; // ?
-    private String[] player_MoveTimes; // ?
+    public boolean is_Winner(Player player)
+    {
+        if ( ( this.get_Winner() == player ) )
+        {
+            return (true);
+        }
+        else
+        {
+            return (false);
+        }
+    }
+    
+    public boolean is_Loser(Player player)
+    {
+        // CODE
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public boolean is_Tie()
+    {
+        if      ( ( this.is_RoundComplete() == false ) )
+        {
+            return (false);
+        }
+        else if ( ( this.plays.get(0) == this.plays.get(1) ) )
+        {
+            return (true);
+        }
+        else
+        {
+            return (false);
+        }
+    }
+    
+    // [ END ] Boolean Section [ END ]
+
+    
+    
+    // NOTE: These two lists are in order.
+    private ArrayList<Player> players; // The players of this round.
+    private ArrayList<Play> plays; // Player's moves.
 }

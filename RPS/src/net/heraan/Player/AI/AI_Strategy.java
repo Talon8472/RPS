@@ -17,13 +17,20 @@ package net.heraan.Player.AI;
 import net.heraan.Game.Play;
 
 /**
- * @description ?
+ * @description An AI strategy to be implemented for playing a game.
  * 
  * @author Robert Friedland
- * @documentor Quynhanh Nguyen
+ * @documentor Robert Friedland
  * @version March 8, 2012 (1.0)
  */
 public interface AI_Strategy
 {
+    /**
+     * @description Calculates and returns a play. 
+     * 
+     * @return A play choice based on some calculation.
+     * @precondition None.
+     * @postcondition Returns a Play based on some calculation.
+     */
     public abstract Play calculate_play();
 }

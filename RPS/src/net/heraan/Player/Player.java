@@ -25,7 +25,12 @@ import net.heraan.Game;
  * @version March 4, 2012 (1.0)
  */
 public abstract class Player
-{        
+{
+    public Player()
+    {
+        this.game_history = new ArrayList<Game>();
+    }
+    
     /**
      * @description: ?
      * 

@@ -32,7 +32,7 @@ public class Main
      * @precondition At most one argument is given, and that argument is an integer value.
      * @postcondition A Rock-Paper-Scissors game will be started with a CLI.
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
         // If there are arguments given.
         if (args.length > 0)
@@ -42,7 +42,7 @@ public class Main
             
             // Start CLI with the given number of rounds per match.
             int rounds_per_match = Integer.parseInt(args[0]);
-            CLI ui = new CLI(rounds_per_match);
+            CLI ui = new CLI(rounds_per_match-1);
         }
         // If no argument is given.
         else

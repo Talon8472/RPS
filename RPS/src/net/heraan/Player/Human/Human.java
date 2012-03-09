@@ -33,18 +33,34 @@ public class Human extends Player
      * @postcondition ?
      * @precondition ?
      */
-    public Human() {}
+    public Human()
+    {
+    }
     
     /**
      * @description: ?
      * 
+     * @param nickname ?
+     * @postcondition ?
+     * @precondition ?
+     */
+    public Human(String nickname)
+    {
+        super.set_Nickname(nickname);
+    }
+    
+    /**
+     * @description: ?
+     * 
+     * @param nickname ?
      * @param first_name ?
      * @param last_name ?
      * @postcondition ?
      * @precondition ?
      */
-    public Human(String first_name, String last_name)
+    public Human(String nickname, String first_name, String last_name)
     {
+        super.set_Nickname(nickname);
         this.set_FirstName(first_name);
         this.set_LastName(last_name);
     }

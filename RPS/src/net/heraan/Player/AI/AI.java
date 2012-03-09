@@ -14,9 +14,8 @@
 
 package net.heraan.Player.AI;
 
-import net.heraan.Player.Player;
-import java.util.ArrayList;
 import net.heraan.Game.Play;
+import net.heraan.Player.Player;
 
 /**
  * @description ?
@@ -25,34 +24,90 @@ import net.heraan.Game.Play;
  * @documentor Quynhanh Nguyen
  * @version March 4, 2012
  */
-public class AI extends Player
+public final class AI extends Player
 {
     // [BEGIN] Constructors [BEGIN]
     
     /**
      * @description: ?
      * 
+     * @param ?
      * @postcondition ?
      * @precondition ?
      */
-    public AI()
+    public AI() {}
+    
+    public AI(String nickname)
     {
-        // CODE
+        super.set_Nickname(nickname);
+    }
+    
+    /**
+     * @description: ?
+     * 
+     * @param mind ?
+     * @postcondition ?
+     * @precondition ?
+     */
+    public AI(AI_Strategy mind)
+    {
+        this.set_Strategy(mind);
+    }
+    
+    /**
+     * @description: ?
+     * 
+     * @param nickname ?
+     * @param mind ?
+     * @postcondition ?
+     * @precondition ?
+     */
+    public AI(String nickname, AI_Strategy mind)
+    {
+        super.set_Nickname(nickname);
+        
+        this.set_Strategy(mind);
     }
     
     // [ END ] Constructors [ END ]
     
+    /**
+     * @description: ?
+     * 
+     * @return ?
+     * @postcondition ?
+     * @precondition ?
+     */
     public Play play()
     {
         return (mind.calculate_play());
     }
     
+    /**
+     * @description: ?
+     * 
+     * @param mind ?
+     * @postcondition ?
+     * @precondition ?
+     */
     public void set_Strategy(AI_Strategy mind)
     {
         this.mind = mind;
     }
     
-    private AI_Strategy mind;
+    /**
+     * @description: ?
+     * 
+     * @return ?
+     * @postcondition ?
+     * @precondition ?
+     */
+    public AI_Strategy get_Strategy()
+    {
+        return (this.mind);
+    }
+    
+    private AI_Strategy mind = null; // ?
     
     
     // [BEGIN] IGNORE: Version 2.0 Stuff [BEGIN]
